@@ -50,3 +50,20 @@ TeamTree()
 - Recursively prints the current team structure from top to bottom.
 - Visually indents based on hierarchy level.
 - Defaults to printing from the root.
+## Run the completed assignment
+
+Requires Python 3 and no external packages.
+
+```sh
+python tree_builder.py
+```
+
+Run the automated checks:
+
+```sh
+python -m unittest -v
+```
+
+The 200-300 word design reflection is in `design_memo.txt`.
+Manager names should be unique; duplicate manager names select the first
+match when traversing the root, left subtree, then right subtree.

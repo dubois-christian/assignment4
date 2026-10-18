@@ -1,0 +1,9 @@
+Design Memo
+
+The company directory uses a custom binary tree. Each EmployeeNode stores an employee name and two references, left and right, initially set to None. TeamTree stores the root reference. This represents reporting relationships directly without storing the directory in a list or dictionary.
+
+Recursive insertion performs a depth-first search beginning at the root. If the current employee matches the requested manager, the method checks the selected side and attaches a new node only when that position is empty. Otherwise, it searches the left subtree and then the right subtree. Each recursive call returns whether it found the manager, allowing earlier calls to stop searching. This return value indicates a manager match, even when insertion is rejected because the position is occupied.
+
+The main challenge is distinguishing an initial call from reaching an empty branch. Resetting every missing child to the root would cause repeated searching and potentially infinite recursion. The implementation avoids this by recursing only into existing children. It also prints the missing-manager message only after the initial search finishes, rather than producing an error for every unsuccessful branch. Names are assumed to identify managers uniquely; duplicate names resolve to the first preorder match.
+
+Trees are useful when relationships are inherently hierarchical, including organizational charts, file systems, and nested document elements. Recursive printing visits each employee before their reports and uses indentation to display depth. Searching takes O(n) time in the worst case, and recursion uses O(h) additional space, where h is tree height. This reporting tree is not a binary search tree, so it does not guarantee logarithmic lookup. A real organization allowing more than two reports would require a broader tree model.
